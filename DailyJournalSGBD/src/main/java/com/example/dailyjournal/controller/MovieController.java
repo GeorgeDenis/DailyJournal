@@ -30,7 +30,7 @@ public class MovieController {
     public ResponseEntity<String> addMovie(@Valid @RequestBody MovieRequestDto movieRequestDto){
         System.out.println(movieRequestDto.getUserId());
         if(movieRequestDto.getName() == null || movieRequestDto.getRating() == null){
-            return new ResponseEntity<>("You must complete movie title and rating!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("You must complete all inputs!", HttpStatus.BAD_REQUEST);
         }
         Movie movie = new Movie(movieRequestDto.getName(),
                 movieRequestDto.getRating(),

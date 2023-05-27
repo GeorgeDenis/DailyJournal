@@ -6,8 +6,10 @@ import com.example.application.components.appnav.AppNavItem;
 import com.example.application.data.entity.User;
 import com.example.application.data.service.UserService;
 import com.example.application.views.books.BooksView;
+import com.example.application.views.fitness.FitnessView;
 import com.example.application.views.login.LoginForm;
 import com.example.application.views.logout.LogoutForm;
+
 import com.example.application.views.movies.MoviesView;
 import com.example.application.views.register.RegistrationForm;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -68,7 +70,9 @@ public class MenuLayout extends AppLayout {
         nav.addItem(new AppNavItem("Logout", LogoutForm.class, LineAwesomeIcon.USER.create()));
         nav.addItem(new AppNavItem("Main", MainView.class, LineAwesomeIcon.REGISTERED.create()));
         nav.addItem(new AppNavItem("Books", BooksView.class, LineAwesomeIcon.BOOK_SOLID.create()));
-        nav.addItem(new AppNavItem("Movies", MoviesView.class, LineAwesomeIcon.BOOK_SOLID.create()));
+        nav.addItem(new AppNavItem("Movies", MoviesView.class, LineAwesomeIcon.PHOENIX_FRAMEWORK.create()));
+        nav.addItem(new AppNavItem("Fitness", FitnessView.class, LineAwesomeIcon.VOLLEYBALL_BALL_SOLID.create()));
+
 
 
 

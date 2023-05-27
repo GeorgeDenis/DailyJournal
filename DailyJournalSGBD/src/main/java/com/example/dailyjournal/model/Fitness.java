@@ -16,18 +16,18 @@ public class Fitness {
     private Double calories;
     private Long userId;
 
-    private LocalDate Date;
+    private LocalDate date;
 
     public Fitness() {
     }
 
-    public Fitness(String gym, Double water, Double sleep, Double calories, Long userId, LocalDate Date) {
+    public Fitness(String gym, Double water, Double sleep, Double calories, Long userId, LocalDate date) {
         this.gym = gym;
         this.water = water;
         this.sleep = sleep;
         this.calories = calories;
         this.userId = userId;
-        this.Date = Date;
+        this.date = LocalDate.now();
     }
 
     public int getId() {
@@ -79,10 +79,10 @@ public class Fitness {
     }
 
     public LocalDate getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(LocalDate date) {
-        Date = date;
+        this.date = date;
     }
 }

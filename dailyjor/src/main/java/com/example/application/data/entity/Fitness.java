@@ -5,23 +5,23 @@ import java.time.LocalDate;
 public class Fitness {
 
     private String gym;
-    private String water;
+    private Double water;
     private Double sleep;
     private Double calories;
     private Long userId;
-    private LocalDate Date;
+    private LocalDate date;
 
     public Fitness() {
     }
 
 
-    public Fitness(String gym, String water, Double sleep, Double calories, Long userId, LocalDate date) {
+    public Fitness(String gym, Double water, Double sleep, Double calories, Long userId, LocalDate date) {
         this.gym = gym;
         this.water = water;
         this.sleep = sleep;
         this.calories = calories;
         this.userId = userId;
-        Date = date;
+        this.date = LocalDate.now();
     }
 
     public String getGym() {
@@ -32,11 +32,11 @@ public class Fitness {
         this.gym = gym;
     }
 
-    public String getWater() {
+    public Double getWater() {
         return water;
     }
 
-    public void setWater(String water) {
+    public void setWater(Double water) {
         this.water = water;
     }
 
@@ -65,10 +65,10 @@ public class Fitness {
     }
 
     public LocalDate getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(LocalDate date) {
-        Date = date;
+        this.date = date;
     }
 }

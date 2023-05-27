@@ -42,6 +42,6 @@ public class FitnessController {
 //            return new ResponseEntity<>("Movie with this name already exist!", HttpStatus.BAD_REQUEST);
 //        }
         fitnessService.save(fitness);
-        return new ResponseEntity<>("Movie saved succesfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Fitness entry saved succesfully", HttpStatus.CREATED);
     }
 }

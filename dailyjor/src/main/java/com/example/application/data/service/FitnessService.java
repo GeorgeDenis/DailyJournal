@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
             this.userService = userService;
         }
 
-        public Fitness[] getMovies() {
+        public Fitness[] getFitness() {
             User user = userService.findByIsLoggedTrue();
             if(user == null){
                 return new Fitness[0]; // returneaza un array gol
