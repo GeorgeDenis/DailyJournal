@@ -42,10 +42,10 @@ public class BookController {
                 bookService.save(book);
                 return new ResponseEntity<>("Book saved succesfully", HttpStatus.CREATED);
     }
-    @DeleteMapping("/{name}")
-    public ResponseEntity<String> deleteBook(@PathVariable String name) {
-        if(bookService.existsByName(name)){
-            Book book = bookService.findByName(name);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteBook(@PathVariable int id) {
+        if(bookService.existsById(id)){
+            Book book = bookService.findById(id);
             bookService.delete(book);
             return new ResponseEntity<>("Book deleted succesfully",HttpStatus.ACCEPTED);
         }

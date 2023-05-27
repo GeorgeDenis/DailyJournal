@@ -1,6 +1,7 @@
 package com.example.dailyjournal.controller;
 
 import com.example.dailyjournal.dto.request.MovieRequestDto;
+import com.example.dailyjournal.model.Book;
 import com.example.dailyjournal.model.Movie;
 import com.example.dailyjournal.service.MovieService;
 import org.springframework.http.HttpStatus;
@@ -41,10 +42,10 @@ public class MovieController {
         movieService.save(movie);
         return new ResponseEntity<>("Movie saved succesfully", HttpStatus.CREATED);
     }
-    @DeleteMapping("/{name}")
-    public ResponseEntity<String> deleteMovie(@PathVariable String name) {
-        if(movieService.existsByName(name)){
-            Movie movie = movieService.findByName(name);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteMovie(@PathVariable int id) {
+        if(movieService.existsById(id)){
+            Movie movie = movieService.findById(id);
             movieService.delete(movie);
             return new ResponseEntity<>("Movie deleted succesfully",HttpStatus.ACCEPTED);
         }

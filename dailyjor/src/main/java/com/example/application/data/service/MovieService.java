@@ -46,6 +46,17 @@ public class MovieService {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    public ResponseEntity<String> deleteMovie(int id) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        try {
+            String url = API_URL + "/" + id;
+            restTemplate.delete(url);
+            return new ResponseEntity<>("Movie deleted succesfully", HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 

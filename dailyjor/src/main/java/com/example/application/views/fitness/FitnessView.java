@@ -31,8 +31,12 @@ public class FitnessView extends Div {
         layout.setPadding(false);
         layout.setSpacing(false);
         Button goToFitnessFormView = new Button("Add a fitness entry");
+        Button goToDeleteForm = new Button("Delete a Fitness entry");
         goToFitnessFormView.addClickListener(e -> goToFitnessFormView.getUI().ifPresent(ui ->
                 ui.navigate("fitness-form")));
+        goToDeleteForm.addClickListener(e -> goToDeleteForm.getUI().ifPresent(ui ->
+                ui.navigate("fitness-delete")));
+        layout.add(goToFitnessFormView,goToDeleteForm);
 
         layout.add(goToFitnessFormView);
 
@@ -41,6 +45,7 @@ public class FitnessView extends Div {
 
     private Component createGrid() {
         grid = new Grid<>(Fitness.class, false);
+        grid.addColumn("id").setAutoWidth(true);
         grid.addColumn("gym").setAutoWidth(true);
         grid.addColumn("water").setAutoWidth(true);
         grid.addColumn("sleep").setAutoWidth(true);

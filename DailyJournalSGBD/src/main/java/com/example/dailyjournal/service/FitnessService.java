@@ -33,4 +33,12 @@ public class FitnessService {
     public List<Fitness> getAllByUserId(Long userId) {
         return fitnessRepository.getAllByUserId(userId);
     }
+
+    public boolean existsById(int id) {
+        return fitnessRepository.existsById(id);
+    }
+
+    public Fitness findById(int id) {
+        return fitnessRepository.findById(id).orElse(null);
+    }
 }

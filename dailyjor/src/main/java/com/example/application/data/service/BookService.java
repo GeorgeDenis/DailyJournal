@@ -45,6 +45,17 @@ public class BookService {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    public ResponseEntity<String> deleteBook(int id) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        try {
+            String url = API_URL + "/" + id;
+            restTemplate.delete(url);
+            return new ResponseEntity<>("Book deleted successfully", HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 

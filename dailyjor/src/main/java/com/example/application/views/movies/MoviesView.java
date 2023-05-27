@@ -32,8 +32,12 @@ public class MoviesView extends Div {
         layout.setPadding(false);
         layout.setSpacing(false);
         Button goToMovieFormView = new Button("Add a Movie");
+        Button goToDeleteForm = new Button("Delete a Movie");
         goToMovieFormView.addClickListener(e -> goToMovieFormView.getUI().ifPresent(ui ->
                 ui.navigate("movies-form")));
+        goToDeleteForm.addClickListener(e -> goToDeleteForm.getUI().ifPresent(ui ->
+                ui.navigate("movie-delete")));
+        layout.add(goToMovieFormView,goToDeleteForm);
 
         layout.add(goToMovieFormView);
 
@@ -42,6 +46,7 @@ public class MoviesView extends Div {
 
     private Component createGrid() {
         grid = new Grid<>(Movie.class, false);
+        grid.addColumn("id").setAutoWidth(true);
         grid.addColumn("name").setAutoWidth(true);
         grid.addColumn("rating").setAutoWidth(true);
         grid.addColumn("finish").setAutoWidth(true);

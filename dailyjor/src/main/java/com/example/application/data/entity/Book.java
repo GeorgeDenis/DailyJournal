@@ -4,6 +4,7 @@ package com.example.application.data.entity;
 import java.time.LocalDate;
 
 public class Book {
+    private int id;
     private String name;
 
     private String author;
@@ -13,6 +14,14 @@ public class Book {
     private Long userId;
 
     public Book() {
+    }
+
+    public Book( String name, String author, double price, LocalDate finish, Long userId) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.finish = finish;
+        this.userId = userId;
     }
 
     public LocalDate getFinish() {
@@ -53,6 +62,14 @@ public class Book {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

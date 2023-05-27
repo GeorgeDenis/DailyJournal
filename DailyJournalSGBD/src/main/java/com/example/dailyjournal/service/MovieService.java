@@ -38,4 +38,12 @@ public class MovieService {
     public List<Movie> getAllByUserId(Long userId) {
         return movieRepository.getAllByUserId(userId);
     }
+
+    public Movie findById(int id) {
+        return movieRepository.findById(id).orElse(null);
+    }
+
+    public boolean existsById(int id) {
+        return movieRepository.existsById(id);
+    }
 }

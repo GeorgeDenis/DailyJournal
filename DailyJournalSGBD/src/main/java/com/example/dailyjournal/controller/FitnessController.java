@@ -44,4 +44,13 @@ public class FitnessController {
         fitnessService.save(fitness);
         return new ResponseEntity<>("Fitness entry saved succesfully", HttpStatus.CREATED);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteFitness(@PathVariable int id) {
+        if(fitnessService.existsById(id)){
+            Fitness fitness = fitnessService.findById(id);
+            fitnessService.delete(fitness);
+            return new ResponseEntity<>("Fitness entry deleted succesfully",HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Fitness entry not found",HttpStatus.NOT_FOUND);
+    }
 }

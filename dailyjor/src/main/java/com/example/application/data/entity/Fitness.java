@@ -3,6 +3,7 @@ package com.example.application.data.entity;
 import java.time.LocalDate;
 
 public class Fitness {
+    private int id;
 
     private String gym;
     private Double water;
@@ -70,5 +71,13 @@ public class Fitness {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
