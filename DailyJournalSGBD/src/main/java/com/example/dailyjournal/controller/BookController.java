@@ -28,7 +28,6 @@ public class BookController {
     }
     @PostMapping("/save")
     public ResponseEntity<String> addBook(@Valid @RequestBody BookRequestDto bookRequestDto){
-        System.out.println(bookRequestDto.getUserId());
         if(bookRequestDto.getName() == null || bookRequestDto.getAuthor() == null){
             return new ResponseEntity<>("You must complete book title and author!", HttpStatus.BAD_REQUEST);
         }
@@ -36,7 +35,7 @@ public class BookController {
                     bookRequestDto.getAuthor(),
                     bookRequestDto.getPrice(),
                     bookRequestDto.getUserId(), bookRequestDto.getFinishDate());
-                if(bookService.existsByName(bookRequestDto.getName())){
+                if(bookService.existsByUserIdAndName(bookRequestDto.getUserId(), bookRequestDto.getName())){
                     return new ResponseEntity<>("Book with this name already exist!", HttpStatus.BAD_REQUEST);
                 }
                 bookService.save(book);

@@ -38,7 +38,7 @@ public class MovieController {
         Movie movie = new Movie(movieRequestDto.getName(),
                 movieRequestDto.getRating(),
                 movieRequestDto.getUserId(), movieRequestDto.getFinish());
-        if(movieService.existsByName(movieRequestDto.getName())){
+        if(movieService.existsByUserIdAndName(movieRequestDto.getUserId(), movieRequestDto.getName())){
             return new ResponseEntity<>("Movie with this name already exist!", HttpStatus.BAD_REQUEST);
         }
         movieService.save(movie);

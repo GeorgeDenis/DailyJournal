@@ -48,4 +48,8 @@ public class BookService {
     public Book findById(int id) {
         return bookRepository.findById(id).orElse(null);
     }
+
+    public boolean existsByUserIdAndName(Long userId, String name) {
+            return bookRepository.existsByUserIdAndName(userId,name);
+    }
 }

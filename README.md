@@ -35,4 +35,3 @@ Visit `localhost:8090` in your browser. Register for a new account or login if y
 ## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
-

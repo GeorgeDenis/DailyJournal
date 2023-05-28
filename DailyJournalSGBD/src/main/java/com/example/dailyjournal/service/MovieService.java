@@ -46,4 +46,8 @@ public class MovieService {
     public boolean existsById(int id) {
         return movieRepository.existsById(id);
     }
+
+    public boolean existsByUserIdAndName(Long userId, String name) {
+        return movieRepository.existsByUserIdAndName(userId,name);
+    }
 }

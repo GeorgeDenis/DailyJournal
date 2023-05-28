@@ -60,7 +60,7 @@ public class RegistrationForm extends VerticalLayout {
 
         });
         loginButton.addClickListener(event -> {
-            UI.getCurrent().navigate(RegistrationForm.class);
+            UI.getCurrent().navigate(LoginForm.class);
         });
         homeButton.addClickListener(event -> {
             UI.getCurrent().navigate(MainView.class);

@@ -11,4 +11,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     Movie findByName(String name);
 
     List<Movie> getAllByUserId(Long userId);
+
+    boolean existsByUserIdAndName(Long userId, String name);
 }
