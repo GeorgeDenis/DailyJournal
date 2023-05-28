@@ -48,6 +48,10 @@ public class RegistrationForm extends VerticalLayout {
         registerButton.addClickListener(event -> {
             User user = new User();
             binder.writeBeanIfValid(user);
+            if(userService.findByUsername(user.getUsername()) != null){
+                Notification.show("User with this username already exists!");
+                return;
+            }
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setLogged(false);
             userService.save(user);
