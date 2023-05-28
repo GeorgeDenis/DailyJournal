@@ -51,5 +51,26 @@ public class BookController {
         }
         return new ResponseEntity<>("Book not found",HttpStatus.NOT_FOUND);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateBook(@Valid @RequestBody BookRequestDto bookRequestDto,@PathVariable int id) {
+        if(bookService.existsById(id)){
+            Book book = bookService.findById(id);
+            if(!bookRequestDto.getAuthor().isEmpty()){
+                book.setAuthor(bookRequestDto.getAuthor());
+            }
+            if(!bookRequestDto.getName().isEmpty()){
+                book.setName(bookRequestDto.getName());
+            }
+            if(bookRequestDto.getFinish() != null){
+                book.setFinish(bookRequestDto.getFinish());
+            }
+            if(!bookRequestDto.getPrice().equals("0.0")){
+                book.setPrice(bookRequestDto.getPrice());
+            }
+            bookService.save(book);
+            return new ResponseEntity<>("Book updated succesfully",HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Book not found",HttpStatus.NOT_FOUND);
+    }
 
 }

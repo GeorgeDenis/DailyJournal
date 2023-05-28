@@ -1,5 +1,6 @@
 package com.example.application.data.service;
 
+import com.example.application.data.entity.Book;
 import com.example.application.data.entity.Fitness;
 import com.example.application.data.entity.Movie;
 import com.example.application.data.entity.User;
@@ -53,6 +54,21 @@ import org.springframework.web.client.RestTemplate;
                 String url = API_URL + "/" + id;
                 restTemplate.delete(url);
                 return new ResponseEntity<>("Fitness entry deleted succesfully", HttpStatus.ACCEPTED);
+            } catch (Exception e) {
+                return new ResponseEntity<>("Fitness entry not found", HttpStatus.NOT_FOUND);
+            }
+        }
+        public ResponseEntity<String> updateFitness(Fitness fitness) {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            HttpEntity<Fitness> request = new HttpEntity<>(fitness, headers);
+
+            try {
+                String url = API_URL + "/" + fitness.getId();
+                restTemplate.put(url, request);
+                return new ResponseEntity<>("Fitness entry updated successfully", HttpStatus.ACCEPTED);
             } catch (Exception e) {
                 return new ResponseEntity<>("Fitness entry not found", HttpStatus.NOT_FOUND);
             }

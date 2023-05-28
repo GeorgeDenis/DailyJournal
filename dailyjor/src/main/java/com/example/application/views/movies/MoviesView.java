@@ -33,11 +33,14 @@ public class MoviesView extends Div {
         layout.setSpacing(false);
         Button goToMovieFormView = new Button("Add a Movie");
         Button goToDeleteForm = new Button("Delete a Movie");
+        Button updateMovieForm = new Button("Update a Movie");
         goToMovieFormView.addClickListener(e -> goToMovieFormView.getUI().ifPresent(ui ->
                 ui.navigate("movies-form")));
         goToDeleteForm.addClickListener(e -> goToDeleteForm.getUI().ifPresent(ui ->
                 ui.navigate("movie-delete")));
-        layout.add(goToMovieFormView,goToDeleteForm);
+        updateMovieForm.addClickListener(e -> updateMovieForm.getUI().ifPresent(ui ->
+                ui.navigate("movie-update")));
+        layout.add(goToMovieFormView,goToDeleteForm,updateMovieForm);
 
         layout.add(goToMovieFormView);
 

@@ -2,13 +2,9 @@ package com.example.application.views.books;
 
 
 import com.example.application.data.entity.Book;
-import com.example.application.data.entity.User;
 import com.example.application.data.service.BookService;
 import com.example.application.views.MenuLayout;
-import com.example.application.views.login.LoginForm;
-import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -16,7 +12,6 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import java.util.Arrays;
@@ -40,11 +35,15 @@ public class BooksView extends Div {
         layout.setSpacing(false);
         Button goToBookFormView = new Button("Add a Book");
         Button goToDeleteForm = new Button("Delete a Book");
+        Button updateBookForm = new Button("Update a Book");
+
         goToBookFormView.addClickListener(e -> goToBookFormView.getUI().ifPresent(ui ->
                 ui.navigate("books-form")));
         goToDeleteForm.addClickListener(e -> goToDeleteForm.getUI().ifPresent(ui ->
                 ui.navigate("books-delete")));
-        layout.add(goToBookFormView,goToDeleteForm);
+        updateBookForm.addClickListener(e -> updateBookForm.getUI().ifPresent(ui ->
+                ui.navigate("books-update")));
+        layout.add(goToBookFormView,goToDeleteForm,updateBookForm);
 
         add(layout);
 

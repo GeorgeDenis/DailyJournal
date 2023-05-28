@@ -32,11 +32,15 @@ public class FitnessView extends Div {
         layout.setSpacing(false);
         Button goToFitnessFormView = new Button("Add a fitness entry");
         Button goToDeleteForm = new Button("Delete a Fitness entry");
+        Button updateFitnessForm = new Button("Update a Fitness entry");
+
         goToFitnessFormView.addClickListener(e -> goToFitnessFormView.getUI().ifPresent(ui ->
                 ui.navigate("fitness-form")));
         goToDeleteForm.addClickListener(e -> goToDeleteForm.getUI().ifPresent(ui ->
                 ui.navigate("fitness-delete")));
-        layout.add(goToFitnessFormView,goToDeleteForm);
+        updateFitnessForm.addClickListener(e -> updateFitnessForm.getUI().ifPresent(ui ->
+                ui.navigate("fitness-update")));
+        layout.add(goToFitnessFormView,goToDeleteForm,updateFitnessForm);
 
         layout.add(goToFitnessFormView);
 

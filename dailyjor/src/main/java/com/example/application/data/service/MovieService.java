@@ -1,5 +1,6 @@
 package com.example.application.data.service;
 
+import com.example.application.data.entity.Book;
 import com.example.application.data.entity.Movie;
 import com.example.application.data.entity.User;
 import org.springframework.http.*;
@@ -57,7 +58,21 @@ public class MovieService {
             return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
         }
     }
+    public ResponseEntity<String> updateMovie(Movie movie) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
+        HttpEntity<Movie> request = new HttpEntity<>(movie, headers);
+
+        try {
+            String url = API_URL + "/" + movie.getId();
+            restTemplate.put(url, request);
+            return new ResponseEntity<>("Movie updated successfully", HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }

@@ -1,7 +1,9 @@
 package com.example.dailyjournal.controller;
 
+import com.example.dailyjournal.dto.request.BookRequestDto;
 import com.example.dailyjournal.dto.request.FitnessRequestDto;
 import com.example.dailyjournal.dto.request.MovieRequestDto;
+import com.example.dailyjournal.model.Book;
 import com.example.dailyjournal.model.Fitness;
 import com.example.dailyjournal.model.Movie;
 import com.example.dailyjournal.service.FitnessService;
@@ -50,6 +52,31 @@ public class FitnessController {
             Fitness fitness = fitnessService.findById(id);
             fitnessService.delete(fitness);
             return new ResponseEntity<>("Fitness entry deleted succesfully",HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Fitness entry not found",HttpStatus.NOT_FOUND);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateFitness(@Valid @RequestBody FitnessRequestDto fitnessRequestDto, @PathVariable int id) {
+        if(fitnessService.existsById(id)){
+            Fitness fitness = fitnessService.findById(id);
+            if(fitnessRequestDto.getGym() != null){
+                fitness.setGym(fitnessRequestDto.getGym());
+            }
+            if(fitnessRequestDto.getWater() != null){
+                fitness.setWater(fitnessRequestDto.getWater());
+            }
+            if(fitnessRequestDto.getSleep() != null){
+                fitness.setSleep(fitnessRequestDto.getSleep());
+            }
+            if(fitnessRequestDto.getCalories() != null){
+                fitness.setCalories(fitnessRequestDto.getCalories());
+            }
+            if(fitnessRequestDto.getDate() != null){
+                fitness.setDate(fitnessRequestDto.getDate());
+            }
+
+            fitnessService.save(fitness);
+            return new ResponseEntity<>("Fitness entry updated succesfully",HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>("Fitness entry not found",HttpStatus.NOT_FOUND);
     }

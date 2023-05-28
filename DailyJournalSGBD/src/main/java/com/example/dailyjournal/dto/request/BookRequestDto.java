@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 public class BookRequestDto {
+    private int id;
     @NotBlank(message = "Name is required.")
     private String name;
     @NotBlank(message = "Author is required.")
@@ -21,7 +22,8 @@ public class BookRequestDto {
     public BookRequestDto() {
     }
 
-    public BookRequestDto(String name, String author, String price, LocalDate finish, Long userId) {
+    public BookRequestDto(int id, String name, String author, String price, LocalDate finish, Long userId) {
+        this.id = id;
         this.name = name;
         this.author = author;
         this.price = price;
@@ -71,5 +73,13 @@ public class BookRequestDto {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

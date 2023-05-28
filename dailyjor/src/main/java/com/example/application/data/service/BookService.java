@@ -56,6 +56,23 @@ public class BookService {
             return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
         }
     }
+    public ResponseEntity<String> updateBook(Book book) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Book> request = new HttpEntity<>(book, headers);
+
+        try {
+            String url = API_URL + "/" + book.getId();
+            restTemplate.put(url, request);
+            return new ResponseEntity<>("Book updated successfully", HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
 
 

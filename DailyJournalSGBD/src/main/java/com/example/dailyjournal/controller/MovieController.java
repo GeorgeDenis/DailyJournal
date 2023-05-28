@@ -1,5 +1,7 @@
 package com.example.dailyjournal.controller;
 
+import com.example.dailyjournal.dto.request.BookRequestDto;
+import com.example.dailyjournal.dto.request.FitnessRequestDto;
 import com.example.dailyjournal.dto.request.MovieRequestDto;
 import com.example.dailyjournal.model.Book;
 import com.example.dailyjournal.model.Movie;
@@ -48,6 +50,24 @@ public class MovieController {
             Movie movie = movieService.findById(id);
             movieService.delete(movie);
             return new ResponseEntity<>("Movie deleted succesfully",HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("Movie not found",HttpStatus.NOT_FOUND);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> deleteBook(@Valid @RequestBody MovieRequestDto movieRequestDto, @PathVariable int id) {
+        if(movieService.existsById(id)){
+            Movie movie = movieService.findById(id);
+            if(!movieRequestDto.getName().isEmpty()){
+                movie.setName(movieRequestDto.getName());
+            }
+            if(movieRequestDto.getFinish() != null){
+                movie.setFinish(movieRequestDto.getFinish());
+            }
+            if(movieRequestDto.getRating() != null){
+                movie.setRating(movieRequestDto.getRating());
+            }
+            movieService.save(movie);
+            return new ResponseEntity<>("Movie updated succesfully",HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>("Movie not found",HttpStatus.NOT_FOUND);
     }
